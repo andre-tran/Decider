@@ -4,5 +4,9 @@
     <string name="app_name">Fooder</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_shuffle">Shuffle</string>
+    <string name="title_activity_edit_favorites">EditFavoritesActivity</string>
+    <string name="title_activity_local_settings">LocalSettingsActivity</string>
+    <string name="title_activity_display">DisplayActivity</string>
 
 </resources>
