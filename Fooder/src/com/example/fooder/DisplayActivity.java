@@ -14,7 +14,6 @@ import android.widget.SimpleCursorAdapter;
 
 public class DisplayActivity extends Activity {
 	ListView list;
-    private CustomCursorAdapter customAdapter;
     private SimpleCursorAdapter dataAdapter;
     
 	@Override
@@ -22,12 +21,9 @@ public class DisplayActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_display);
 		
-		final DataBaseHelper db = new DataBaseHelper(this);
-        
+		final DataBaseHelper db = new DataBaseHelper(this);      
         Cursor cursor = db.getAllFoods();
-        
         String[] columns = new String[] {DataBaseHelper.KEY_NAME};
-        
         int[] to = new int[] {R.id.name};
        
         dataAdapter = new SimpleCursorAdapter(

@@ -62,7 +62,7 @@
         android:text="Add" />
 
     <Button
-        android:id="@+id/change"
+        android:id="@+id/search"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,8 +72,8 @@
         android:layout_toRightOf="@+id/add"
         android:minHeight="36dip"
         android:minWidth="72dip"
-        android:onClick="change"
-        android:text="Change" />
+        android:onClick="search"
+        android:text="Search" />
 
     <Button
         android:id="@+id/remove"
@@ -83,7 +83,7 @@
         android:layout_below="@+id/foodName"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/change"
+        android:layout_toRightOf="@+id/search"
         android:minHeight="36dp"
         android:minWidth="72dip"
         android:onClick="remove"
