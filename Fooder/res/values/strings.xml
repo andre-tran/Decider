@@ -8,5 +8,6 @@
     <string name="title_activity_edit_favorites">EditFavoritesActivity</string>
     <string name="title_activity_local_settings">LocalSettingsActivity</string>
     <string name="title_activity_display">DisplayActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
 
 </resources>

@@ -7,6 +7,9 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShuffleActivity"
+            android:name=".ShuffleSettingsActivity"
             android:label="@string/title_activity_shuffle" >
         </activity>
         <activity
@@ -37,6 +40,18 @@
         <activity
             android:name=".DisplayActivity"
             android:label="@string/title_activity_display" >
+        </activity>
+        <activity
+            android:name=".Shuffle"
+            android:label="@string/title_activity_shuffle" >
+        </activity>
+        <activity
+            android:name=".ShuffleActivity"
+            android:label="@string/title_activity_shuffle" >
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search" >
         </activity>
     </application>
 

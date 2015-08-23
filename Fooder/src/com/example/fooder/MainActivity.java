@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void shuffle(View view) {
-		Intent intent = new Intent(this, ShuffleActivity.class);
+		Intent intent = new Intent(this, ShuffleSettingsActivity.class);
 	    startActivity(intent);
 	}
 	

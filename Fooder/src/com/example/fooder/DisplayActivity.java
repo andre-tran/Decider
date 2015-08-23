@@ -10,10 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 public class DisplayActivity extends Activity {
 	ListView list;
     private CustomCursorAdapter customAdapter;
+    private SimpleCursorAdapter dataAdapter;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +23,22 @@ public class DisplayActivity extends Activity {
 		setContentView(R.layout.activity_display);
 		
 		final DataBaseHelper db = new DataBaseHelper(this);
-        list = (ListView) findViewById(R.id.lv_name);
         
         Cursor cursor = db.getAllFoods();
-        customAdapter = new CustomCursorAdapter(getBaseContext(), cursor);
-        list.setAdapter(customAdapter);
+        
+        String[] columns = new String[] {DataBaseHelper.KEY_NAME};
+        
+        int[] to = new int[] {R.id.name};
+       
+        dataAdapter = new SimpleCursorAdapter(
+        	    this, R.layout.food_layout, 
+        	    cursor, 
+        	    columns, 
+        	    to,
+        	    0);
+        list = (ListView) findViewById(R.id.lv_name);
+        list.setAdapter(dataAdapter);
+
 	}
 
 	@Override

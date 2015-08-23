@@ -6,30 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.fooder.ShuffleActivity" >
-    
-    <RelativeLayout
-            android:id="@+id/relativeLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="75dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp">
+    tools:context="com.example.fooder.ShuffleSettingsActivity" >
 
-        <TextView
-            android:id="@+id/display"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="96dp"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceLarge" />
- 
-    </RelativeLayout>
-
-    
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
@@ -50,4 +28,23 @@
         android:layout_marginRight="30dp"
         android:onClick="start"
         android:text="Start" />
+
+    <CheckBox
+        android:id="@+id/favoriteCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/localCheck"
+        android:layout_marginTop="60dp"
+        android:text="Favorites" />
+
+    <CheckBox
+        android:id="@+id/localCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/foodCheck"
+        android:layout_marginTop="120dp"
+        android:text="Local Area" />
+
 </RelativeLayout>

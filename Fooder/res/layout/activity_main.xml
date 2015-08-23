@@ -9,7 +9,7 @@
     tools:context="com.example.fooder.MainActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/shuffle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,21 +19,24 @@
         android:onClick="shuffle" />
 
     <Button
-        android:id="@+id/Button01"
+        android:id="@+id/editFavorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/shuffle"
         android:text="Edit Favorites"
         android:onClick="editFavorites" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/localSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="56dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/editFavorites"
         android:text="Local Area Settings"
         android:onClick="localSettings" />
 
