@@ -17,7 +17,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_below="@+id/business_name"
-      android:src="@drawable/ic_launcher" />
+      android:src="@drawable/stars0" />
 
   
   <TextView 
@@ -28,4 +28,16 @@
       android:layout_toEndOf="@+id/business_name"    
       android:layout_marginLeft="30dp" 
       android:textSize="12sp" />
+  
+    <TextView 
+      android:id="@+id/url"
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:layout_toRightOf="@+id/address"
+      android:layout_toEndOf="@+id/address"    
+      android:layout_marginLeft="30dp" 
+      android:textColor="@android:color/transparent"
+      android:textSize="0sp" />
+  
+  
 </RelativeLayout>

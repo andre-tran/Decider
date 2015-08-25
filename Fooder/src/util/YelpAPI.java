@@ -1,5 +1,8 @@
 package util;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -163,6 +166,24 @@ public class YelpAPI {
 	    OAuthRequest request = new OAuthRequest(Verb.GET, "http://api.yelp.com/v2/search");
 	    request.addQuerystringParameter("term", term);
 	    request.addQuerystringParameter("ll", latitude + "," + longitude);
+	    this.service.signRequest(this.accessToken, request);
+	    Response response = request.send();
+	    return response.getBody();
+	  }
+  
+  public String search(String term, double latitude, double longitude, ArrayList<HashMap<String, String>> parameters) {
+	    OAuthRequest request = new OAuthRequest(Verb.GET, "http://api.yelp.com/v2/search");
+	    request.addQuerystringParameter("term", term);
+	    request.addQuerystringParameter("ll", latitude + "," + longitude);
+	    
+		if (parameters != null) {
+			for (HashMap<String, String> parameter : parameters) {
+				for (String key : parameter.keySet()) {
+					String param = parameter.get(key);
+					request.addQuerystringParameter(key, param);
+				}
+			}
+		}
 	    this.service.signRequest(this.accessToken, request);
 	    Response response = request.send();
 	    return response.getBody();

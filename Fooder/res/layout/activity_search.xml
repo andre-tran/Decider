@@ -31,20 +31,34 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
         android:text="Back"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:onClick="back" />
     
-        <Button
+    <Button
+        android:id="@+id/moreInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/back"
+        android:layout_toRightOf="@id/back"
+        android:layout_marginLeft="20dp"
+        android:text="More Info"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:onClick="moreInfo" />
+    
+    <Button
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/back"
         android:layout_alignBottom="@+id/back"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@id/moreInfo"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
         android:onClick="add"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Add" />
 
 </RelativeLayout>

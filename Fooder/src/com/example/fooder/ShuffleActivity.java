@@ -1,5 +1,9 @@
 package com.example.fooder;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -17,6 +21,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,11 +31,15 @@ public class ShuffleActivity extends Activity {
 	int count = 0;
 	int iter = 0;
 	TextView display;
+	ImageView rating;
+	TextView address;
 	String[] foods;
 	private SensorManager mSensorManager;
 	private ShakeEventListener mSensorListener;
 	float x1, x2;
 	float y1, y2;
+	static final int MIN_DISTANCE = 150;
+	private ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +55,25 @@ public class ShuffleActivity extends Activity {
 		foods = new String[cursor.getCount()];
 
 		do {
-			String uname = cursor.getString(cursor.getColumnIndex("name"));
-			foods[count] = uname;
+			String business_name = cursor.getString(cursor.getColumnIndex("name"));
+        	String rating = cursor.getString(cursor.getColumnIndex("rating"));
+        	String address = cursor.getString(cursor.getColumnIndex("address"));
+        	Log.v("SHUFFLE", business_name + " " + rating + " " + address);
+			HashMap<String, String> temp = new HashMap<String, String>();
+			temp.put("business_name", business_name);
+			temp.put("rating", rating);
+			temp.put("address", address);
+			arrayList.add(temp);
 			count++;
 		} while (cursor.moveToNext());
 
 		Log.i("ANDRE", Integer.toString(cursor.getCount()));
-		shuffleArray(foods);
+		shuffleArrayList(arrayList);
 
 		display = (TextView) findViewById(R.id.display);
-		display.setText(foods[iter]);
-		iter++;
+		rating = (ImageView) findViewById(R.id.rating);
+		address = (TextView) findViewById(R.id.address);
+		nextFood();
 
 		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 		mSensorListener = new ShakeEventListener();
@@ -79,14 +96,14 @@ public class ShuffleActivity extends Activity {
 		case MotionEvent.ACTION_UP: {
 			x2 = touchevent.getX();
 			y2 = touchevent.getY();
-
+			float deltaX = x2 - x1;
 			// if left to right sweep event on screen
-			if (x1 < x2) {
+			if ((x2 - x1) > MIN_DISTANCE) {
 				nextFood();
 			}
 
 			// if right to left sweep event on screen
-			if (x1 > x2) {
+			if ((x1 - x2) > MIN_DISTANCE) {
 				nextFood();
 			}
 
@@ -134,31 +151,19 @@ public class ShuffleActivity extends Activity {
 
 	public void nextFood() {
 		if (iter < count) {
-			display.setText(foods[iter]);
+			display.setText(arrayList.get(iter).get("business_name"));
+			setRatingPNG(arrayList.get(iter).get("rating"), rating);
+			address.setText(arrayList.get(iter).get("address"));
 			iter++;
 		} else {
 			Toast.makeText(this, "Restarting List", Toast.LENGTH_LONG).show();
-			shuffleArray(foods);
+			shuffleArrayList(arrayList);
 			iter = 0;
 		}
 	}
-
-	public void check(View view) {
-		if (favorites)
-			Toast.makeText(this, "Favorites", Toast.LENGTH_LONG).show();
-		if (local)
-			Toast.makeText(this, "Local", Toast.LENGTH_LONG).show();
-	}
-
-	public void shuffleArray(String[] ar) {
-		Random rnd = new Random();
-		for (int i = ar.length - 1; i > 0; i--) {
-			int index = rnd.nextInt(i + 1);
-			// Simple swap
-			String a = ar[index];
-			ar[index] = ar[i];
-			ar[i] = a;
-		}
+	
+	public void shuffleArrayList(ArrayList<HashMap<String, String>> ar){
+		Collections.shuffle(ar);
 	}
 
 	@Override
@@ -172,4 +177,47 @@ public class ShuffleActivity extends Activity {
 		mSensorManager.unregisterListener(mSensorListener);
 		super.onPause();
 	}
+	
+    public void setRatingPNG(String rating, ImageView view){
+    	if(rating.equals("1.0")){
+    		view.setImageResource(R.drawable.stars1);
+    		view.setTag("1.0");
+    	}
+    	else if(rating.equals("1.5")){
+    		view.setImageResource(R.drawable.stars15);
+    		view.setTag("1..5");
+    	}
+    	else if(rating.equals("2.0")){
+    		view.setImageResource(R.drawable.stars2);
+    		view.setTag("2.0");
+    	}
+    	else if(rating.equals("2.5")){
+    		view.setImageResource(R.drawable.stars25);
+    		view.setTag("2.5");
+    	}
+    	else if(rating.equals("3.0")){
+    		view.setImageResource(R.drawable.stars3);
+    		view.setTag("3.0");
+    	}
+    	else if(rating.equals("3.5")){
+    		view.setImageResource(R.drawable.stars35);
+    		view.setTag("3.5");
+    	}
+    	else if(rating.equals("4.0")){
+    		view.setImageResource(R.drawable.stars4);
+    		view.setTag("4.0");
+    	}
+    	else if(rating.equals("4.5")){
+    		view.setImageResource(R.drawable.stars45);
+    		view.setTag("4.5");
+    	}
+    	else if(rating.equals("5.0")){
+    		view.setImageResource(R.drawable.stars5);
+    		view.setTag("5.0");
+    	}
+    	else{
+    		view.setImageResource(R.drawable.stars0);
+    		view.setTag("0.0");
+		}
+    }
 }

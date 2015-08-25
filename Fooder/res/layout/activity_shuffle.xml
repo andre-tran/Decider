@@ -23,9 +23,32 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="60dp"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        <ImageView
+		      android:id="@+id/rating"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:layout_below="@+id/display"
+		      android:layout_centerHorizontal="true"
+		      android:layout_alignParentTop="true"
+              android:layout_marginTop="108dp"
+		      android:src="@drawable/stars0" />
+		
+		  
+		<TextView 
+		      android:id="@+id/address"
+		      android:layout_height="wrap_content"
+		      android:layout_width="wrap_content"
+		      android:layout_centerHorizontal="true"
+		      android:layout_alignParentTop="true"
+		      android:layout_below="@+id/rating"
+		      android:layout_marginTop="160dp" 
+  			  android:layout_alignStart="@+id/display"
+  			  android:layout_alignLeft="@+id/display"
+		      android:textAppearance="?android:attr/textAppearanceLarge" />
  
     </RelativeLayout>
 

@@ -3,24 +3,32 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="6dip" >
- 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Name: "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    android:padding="6dip" 
+    android:background="@drawable/row_selector">
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:text="TextView" />
+    
+      <ImageView
+      android:id="@+id/rating"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/name"
+      android:src="@drawable/stars0" />
+
+  
+  <TextView 
+      android:id="@+id/address"
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:layout_toRightOf="@+id/name"
+      android:layout_toEndOf="@+id/name"    
+      android:layout_marginLeft="30dp" 
+      android:textSize="12sp" />
  
 </RelativeLayout>

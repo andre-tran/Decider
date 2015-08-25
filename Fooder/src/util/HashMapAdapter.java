@@ -24,6 +24,7 @@ public class HashMapAdapter extends BaseAdapter {
     TextView business_name_view;
 	ImageView rating_view;
 	TextView address_view;
+	TextView url_view;
     private String[] mKeys;
     
     public HashMapAdapter(Activity activity, LinkedHashMap<String,HashMap<String, String>> data){
@@ -59,12 +60,15 @@ public class HashMapAdapter extends BaseAdapter {
 			business_name_view=(TextView) convertView.findViewById(R.id.business_name);
 			rating_view=(ImageView) convertView.findViewById(R.id.rating);
 			address_view=(TextView) convertView.findViewById(R.id.address);
+			url_view=(TextView) convertView.findViewById(R.id.url);
 //		}
 		
 		HashMap<String, String> map=list.get(key);
 		business_name_view.setText(map.get("business_name"));
 		setRatingPNG(map.get("rating"), rating_view);
 		address_view.setText(map.get("address"));
+		url_view.setText(map.get("url"));
+//		url_view.setVisibility(View.GONE);
 		
 //		new DownloadImageTask(rating_view).execute(map.get("rating"));
 
@@ -73,26 +77,46 @@ public class HashMapAdapter extends BaseAdapter {
     }
     
     public void setRatingPNG(String rating, ImageView view){
-    	if(rating.equals("1.0"))
+    	if(rating.equals("1.0")){
     		view.setImageResource(R.drawable.stars1);
-    	else if(rating.equals("1.5"))
+    		view.setTag("1.0");
+    	}
+    	else if(rating.equals("1.5")){
     		view.setImageResource(R.drawable.stars15);
-    	else if(rating.equals("2.0"))
+    		view.setTag("1..5");
+    	}
+    	else if(rating.equals("2.0")){
     		view.setImageResource(R.drawable.stars2);
-    	else if(rating.equals("2.5"))
+    		view.setTag("2.0");
+    	}
+    	else if(rating.equals("2.5")){
     		view.setImageResource(R.drawable.stars25);
-    	else if(rating.equals("3.0"))
+    		view.setTag("2.5");
+    	}
+    	else if(rating.equals("3.0")){
     		view.setImageResource(R.drawable.stars3);
-    	else if(rating.equals("3.5"))
+    		view.setTag("3.0");
+    	}
+    	else if(rating.equals("3.5")){
     		view.setImageResource(R.drawable.stars35);
-    	else if(rating.equals("4.0"))
+    		view.setTag("3.5");
+    	}
+    	else if(rating.equals("4.0")){
     		view.setImageResource(R.drawable.stars4);
-    	else if(rating.equals("4.5"))
+    		view.setTag("4.0");
+    	}
+    	else if(rating.equals("4.5")){
     		view.setImageResource(R.drawable.stars45);
-    	else if(rating.equals("5.0"))
+    		view.setTag("4.5");
+    	}
+    	else if(rating.equals("5.0")){
     		view.setImageResource(R.drawable.stars5);
-    	else
+    		view.setTag("5.0");
+    	}
+    	else{
     		view.setImageResource(R.drawable.stars0);
+    		view.setTag("0.0");
+		}
     }
     
 	private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {

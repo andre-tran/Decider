@@ -10,4 +10,18 @@
     <string name="title_activity_display">DisplayActivity</string>
     <string name="title_activity_search">SearchActivity</string>
 
+    <string-array name="sort_array">
+        <item>Best matched</item>
+        <item>Distance</item>
+        <item>Highest Rated</item>
+    </string-array>
+    
+    <string-array name="distance_array">
+        <item>1 Mile</item>
+        <item>5 Miles</item>
+        <item>10 Miles</item>
+        <item>25 Miles</item>
+        </string-array>
+    
+    
 </resources>
