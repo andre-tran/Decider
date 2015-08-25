@@ -14,10 +14,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:minHeight="36dip"
+        android:minWidth="72dip"
         android:text="Back"
         android:onClick="back" />
+    
+    <Button
+        android:id="@+id/editSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/back"
+        android:layout_toRightOf="@id/back"
+        android:layout_toLeftOf="@+id/start"
+        android:text="Edit Settings"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:minHeight="38dip"
+        android:minWidth="72dip"
+        android:onClick="editSettings" />
 
     <Button
         android:id="@+id/start"
@@ -25,7 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/back"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="10dp"
+        android:minHeight="36dip"
+        android:minWidth="72dip"
         android:onClick="start"
         android:text="Start" />
 
@@ -34,8 +51,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/localCheck"
-        android:layout_marginTop="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
         android:text="Favorites" />
 
     <CheckBox
@@ -43,8 +61,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/foodCheck"
-        android:layout_marginTop="120dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:layout_alignBottom="@+id/favoriteCheck"
         android:text="Local Area" />
 
 </RelativeLayout>

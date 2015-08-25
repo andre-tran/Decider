@@ -11,14 +11,17 @@ import org.json.JSONObject;
 
 import util.DataBaseHelper;
 import util.Food;
+import util.GPSTracker;
 import util.HashMapAdapter;
 import util.YelpAPI;
+import util.YelpSettings;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -55,7 +58,8 @@ public class SearchActivity extends Activity {
 	boolean mexican;
 	boolean thai;
 	boolean vietnamese;
-	
+	GPSTracker gps;   
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,10 +84,20 @@ public class SearchActivity extends Activity {
 		
 		list = new LinkedHashMap<String,HashMap<String,String>>();
 		
-		LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
-		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		double latitude = location.getLatitude();
-		double longitude = location.getLongitude();
+		double latitude = YelpSettings.getInstance().getLatitude();
+		double longitude = YelpSettings.getInstance().getLongitude();
+		gps = new GPSTracker(this);
+		if(gps.canGetLocation()){    
+			if(latitude != gps.getLatitude() || longitude != gps.getLongitude()){
+				latitude = gps.getLatitude();
+				longitude = gps.getLongitude();
+				YelpSettings.getInstance().setLatitude(latitude);
+				YelpSettings.getInstance().setLongitude(longitude);
+			}
+        }else{
+            gps.showSettingsAlert();
+        }
+		
 		
 		params = new ArrayList<HashMap<String, String>>();
 		
@@ -246,4 +260,6 @@ public class SearchActivity extends Activity {
 	private static String removeLastChar(String str) {
         return str.substring(0,str.length()-1);
     }
+
+	
 }

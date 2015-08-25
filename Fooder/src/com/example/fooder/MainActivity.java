@@ -3,23 +3,49 @@ package com.example.fooder;
 import java.io.IOException;
 
 import util.DataBaseHelper;
+import util.GPSTracker;
+import util.YelpSettings;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-public class MainActivity extends Activity {
-
+public class MainActivity extends Activity{
+	GPSTracker gps;   
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-        DataBaseHelper db = new DataBaseHelper(this);
+
+		DataBaseHelper db = new DataBaseHelper(this);
+		gps = new GPSTracker(MainActivity.this);
+		if(gps.canGetLocation()){                  
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude(); 
+            
+    		YelpSettings.getInstance().setLatitude(latitude);
+    		YelpSettings.getInstance().setLongitude(longitude);
+
+            
+            // \n is for new line
+            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();   
+        }else{
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            gps.showSettingsAlert();
+        }
 	}
 
 	@Override
@@ -55,8 +81,7 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(this, LocalSettingsActivity.class);
 	    startActivity(intent);
 	}
-	
-	
+
 }
 
 

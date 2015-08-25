@@ -8,32 +8,130 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.fooder.LocalSettingsActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:text="Local Area Settings" />
-
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="34dp"
-        android:layout_marginLeft="39dp"
-        android:text="Back" 
-        android:onClick="back" />
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:minHeight="36dip"
+        android:minWidth="72dip"
+        android:onClick="back"
+        android:text="Back" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignBaseline="@+id/back"
+        android:layout_alignBottom="@+id/back"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="56dp"
-        android:text="Save" />
+        android:layout_marginRight="20dp"
+        android:minHeight="36dip"
+        android:minWidth="72dip"
+        android:onClick="save"
+        android:text="Save Settings" />
 
+
+    <Spinner
+        android:id="@+id/sort_spinner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxHeight="24dip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+    <Spinner
+        android:id="@+id/distance_spinner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sort_spinner2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+    <CheckBox
+        android:id="@+id/american"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/distance_spinner2"
+        android:layout_alignLeft="@+id/back"
+        android:layout_alignStart="@+id/back"
+        android:layout_marginTop="20dp"
+        android:text="American" />
+    
+    <CheckBox
+        android:id="@+id/breakfast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/american"
+        android:layout_alignLeft="@+id/american"
+        android:layout_alignStart="@+id/american"
+        android:layout_marginTop="20dp"
+        android:text="Breakfast" />
+    
+    <CheckBox
+        android:id="@+id/italian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/breakfast"
+        android:layout_alignLeft="@+id/breakfast"
+        android:layout_alignStart="@+id/breakfast"
+        android:layout_marginTop="20dp"
+        android:text="Italian" />
+    
+    <CheckBox
+        android:id="@+id/japanese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/italian"
+        android:layout_alignLeft="@+id/italian"
+        android:layout_alignStart="@+id/italian"
+        android:layout_marginTop="20dp"
+        android:text="Japanese" />
+    
+    <CheckBox
+        android:id="@+id/korean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/distance_spinner2"
+        android:layout_alignRight="@+id/save"
+        android:layout_alignEnd="@+id/save"
+        android:layout_marginTop="20dp"
+        android:minWidth="128dip"
+        android:text="Korean" />
+    
+    <CheckBox
+        android:id="@+id/mexican"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/korean"
+        android:layout_alignRight="@+id/korean"
+        android:layout_alignEnd="@+id/korean"
+        android:layout_marginTop="20dp"
+        android:minWidth="128dip"
+        android:text="Mexican" />
+    
+    <CheckBox
+        android:id="@+id/thai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mexican"
+        android:layout_alignRight="@+id/mexican"
+        android:layout_alignEnd="@+id/mexican"
+        android:layout_marginTop="20dp"
+        android:minWidth="128dip"
+        android:text="Thai" />
+    
+    <CheckBox
+        android:id="@+id/vietnamese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/thai"
+        android:layout_alignRight="@+id/thai"
+        android:layout_alignEnd="@+id/thai"
+        android:layout_marginTop="20dp"
+        android:minWidth="128dip"
+        android:text="Vietnamese" /> 
 </RelativeLayout>

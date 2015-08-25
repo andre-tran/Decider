@@ -33,6 +33,8 @@ import android.widget.Toast;
 
 public class EditFavoritesActivity extends Activity {
 	DataBaseHelper db;
+	Spinner sortText = null;
+	Spinner distanceText = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +49,7 @@ public class EditFavoritesActivity extends Activity {
 		}
 		
 		setResources();
-		
-		
-		
+
 	}
 
 	@Override
@@ -79,8 +79,9 @@ public class EditFavoritesActivity extends Activity {
 	public void search(View view) {
 		EditText txtName=(EditText)this.findViewById(R.id.foodName);
 		String foodName = txtName.getText().toString();
-		Spinner sortText = (Spinner) this.findViewById(R.id.sort_spinner);
-		Spinner distanceText = (Spinner) this.findViewById(R.id.distance_spinner);
+		sortText = (Spinner) this.findViewById(R.id.sort_spinner);
+		distanceText = (Spinner) this.findViewById(R.id.distance_spinner);
+		saveSettings();
 				
 		if(checkFoodName(foodName)){
 			Intent intent = new Intent(this, SearchActivity.class);
@@ -88,8 +89,8 @@ public class EditFavoritesActivity extends Activity {
 				intent.putExtra("foodName", "food");
 			else
 				intent.putExtra("foodName", foodName);
-			intent.putExtra("sortValue", sortText.getSelectedItem().toString());
-			intent.putExtra("distanceValue", distanceText.getSelectedItem().toString());
+			intent.putExtra("sortValue", YelpSettings.getInstance().getSortSetting());
+			intent.putExtra("distanceValue", YelpSettings.getInstance().getDistanceSetting());
 			
 			CheckBox cat = (CheckBox)this.findViewById(R.id.american);
 			intent.putExtra("american", cat.isChecked());
@@ -108,7 +109,6 @@ public class EditFavoritesActivity extends Activity {
 			cat = (CheckBox)this.findViewById(R.id.vietnamese);
 			intent.putExtra("vietnamese", cat.isChecked());
 			
-			saveSettings();
 			
 			startActivity(intent);
 		}
@@ -148,6 +148,9 @@ public class EditFavoritesActivity extends Activity {
 		
 		distance_spinner.setSelection(2);
 		
+		sortText = (Spinner) this.findViewById(R.id.sort_spinner);
+		distanceText = (Spinner) this.findViewById(R.id.distance_spinner);
+		
 		CheckBox temp = (CheckBox) findViewById(R.id.american);
 		temp.setChecked(YelpSettings.getInstance().isAmerican());
 		temp = (CheckBox) findViewById(R.id.breakfast);
@@ -168,6 +171,9 @@ public class EditFavoritesActivity extends Activity {
 	}
 	
 	public void saveSettings(){
+		YelpSettings.getInstance().setSortSetting(sortText.getSelectedItem().toString());
+		YelpSettings.getInstance().setDistanceSetting(distanceText.getSelectedItem().toString());
+		
 		CheckBox cat = (CheckBox)this.findViewById(R.id.american);
 		YelpSettings.getInstance().setAmerican(cat.isChecked());
 		cat = (CheckBox)this.findViewById(R.id.breakfast);
@@ -185,11 +191,4 @@ public class EditFavoritesActivity extends Activity {
 		cat = (CheckBox)this.findViewById(R.id.vietnamese);
 		YelpSettings.getInstance().setVietnamese(cat.isChecked());
 	}
-	
-//	private final LocationListener locationListener = new LocationListener() {
-//	    public void onLocationChanged(Location location) {
-//	        longitude = location.getLongitude();
-//	        latitude = location.getLatitude();
-//	    }
-//	}
 }

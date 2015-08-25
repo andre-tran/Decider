@@ -51,4 +51,9 @@ public class ShuffleSettingsActivity extends Activity {
 		intent.putExtra("local", local.isChecked());
 	    startActivity(intent);
 	}
+	
+	public void editSettings(View view)	{
+		Intent intent = new Intent(this, LocalSettingsActivity.class);
+	    startActivity(intent);
+	}
 }

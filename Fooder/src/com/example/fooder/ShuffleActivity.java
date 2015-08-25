@@ -11,9 +11,11 @@ import util.DataBaseHelper;
 import util.ShakeEventListener;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -40,6 +42,7 @@ public class ShuffleActivity extends Activity {
 	float y1, y2;
 	static final int MIN_DISTANCE = 150;
 	private ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
+	String moreInfoUrl = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +61,13 @@ public class ShuffleActivity extends Activity {
 			String business_name = cursor.getString(cursor.getColumnIndex("name"));
         	String rating = cursor.getString(cursor.getColumnIndex("rating"));
         	String address = cursor.getString(cursor.getColumnIndex("address"));
-        	Log.v("SHUFFLE", business_name + " " + rating + " " + address);
+        	String url = cursor.getString(cursor.getColumnIndex("url"));
+        	Log.v("SHUFFLE", business_name + " " + rating + " " + address + " " + url);
 			HashMap<String, String> temp = new HashMap<String, String>();
 			temp.put("business_name", business_name);
 			temp.put("rating", rating);
 			temp.put("address", address);
+			temp.put("url", url);
 			arrayList.add(temp);
 			count++;
 		} while (cursor.moveToNext());
@@ -148,12 +153,20 @@ public class ShuffleActivity extends Activity {
 	public void start(View view) {
 		nextFood();
 	}
+	
+	public void moreInfo(View view) {
+		Toast.makeText(this, "View More Info", Toast.LENGTH_LONG).show();
+		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(moreInfoUrl));
+		startActivity(browserIntent);
+	}
 
 	public void nextFood() {
 		if (iter < count) {
 			display.setText(arrayList.get(iter).get("business_name"));
 			setRatingPNG(arrayList.get(iter).get("rating"), rating);
 			address.setText(arrayList.get(iter).get("address"));
+			moreInfoUrl = arrayList.get(iter).get("url");
+			Log.v("More Info URL", moreInfoUrl);
 			iter++;
 		} else {
 			Toast.makeText(this, "Restarting List", Toast.LENGTH_LONG).show();

@@ -96,12 +96,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         	String name = cursor.getString(cursor.getColumnIndex(KEY_NAME));
         	String rating = cursor.getString(cursor.getColumnIndex(KEY_RATING));
         	String address = cursor.getString(cursor.getColumnIndex(KEY_ADDRESS));
-        	Log.v("HASH", name + " " + rating + " " + address);
+        	String url = cursor.getString(cursor.getColumnIndex(KEY_URL));
+        	Log.v("HASH", name + " " + rating + " " + address + " " + url);
         	
         	HashMap<String, String> temp = new HashMap<String, String>();
 			temp.put("business_name", name);
 			temp.put("rating", rating);
 			temp.put("address", address);
+			temp.put("url", url);
 			list.put(name, temp);
         } while (cursor.moveToNext());
     	return list;

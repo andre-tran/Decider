@@ -59,18 +59,35 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:minHeight="36dip"
+        android:minWidth="72dip"
         android:text="Back"
         android:onClick="back" />
-
+    
+    <Button
+        android:id="@+id/moreInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/back"
+        android:layout_toRightOf="@id/back"
+        android:layout_toLeftOf="@+id/start"
+        android:minHeight="36dip"
+        android:minWidth="72dip"
+        android:text="More Info"
+        android:onClick="moreInfo" />
+        
     <Button
         android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/back"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:minHeight="36dip"
+        android:minWidth="72dip"
         android:onClick="start"
         android:text="Start" />
 </RelativeLayout>

@@ -27,6 +27,7 @@ public class DisplayActivity extends Activity {
 	ListView list;
     private SimpleCursorAdapter dataAdapter;
     String selectedName = "";
+    String selectedUrl = "";
     DataBaseHelper db;
     
 	@Override
@@ -52,6 +53,7 @@ public class DisplayActivity extends Activity {
 				view.setSelected(true);
 				// selected item
 				selectedName = ((TextView) view.findViewById(R.id.business_name)).getText().toString();
+				selectedUrl = ((TextView) view.findViewById(R.id.url)).getText().toString();
 			}
 		});
 
@@ -83,7 +85,7 @@ public class DisplayActivity extends Activity {
 	public void moreInfo(View view){
 		if(!selectedName.equals("")){
 			Toast.makeText(this, "View More Info", Toast.LENGTH_LONG).show();
-			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(selectedUrl));
 			startActivity(browserIntent);
 		}
 		else{

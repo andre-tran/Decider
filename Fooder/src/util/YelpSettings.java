@@ -15,6 +15,8 @@ public class YelpSettings extends Application {
 	private boolean mexican;
 	private boolean thai;
 	private boolean vietnamese;
+	private Double latitude;
+	private Double longitude;
 	
 	
 	private YelpSettings(){
@@ -28,6 +30,8 @@ public class YelpSettings extends Application {
 		mexican = false;
 		thai = false;
 		vietnamese = false;
+		latitude = null;
+		longitude = null;
 	}
 	
 	public static YelpSettings getInstance(){
@@ -115,6 +119,22 @@ public class YelpSettings extends Application {
 
 	public void setVietnamese(boolean vietnamese) {
 		this.vietnamese = vietnamese;
+	}
+	
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 
 }
